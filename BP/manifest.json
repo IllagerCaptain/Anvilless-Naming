@@ -1,0 +1,72 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"IllagerCaptain"
+		],
+		"product_type": "addon"
+	},
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"min_engine_version": [
+			1,
+			21,
+			100
+		],
+		"uuid": "7df939a1-f0e6-44a2-9bd8-4cab447a72ac",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "data",
+			"uuid": "831d0ac8-b26f-4f76-b669-81c595267b2f",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"type": "script",
+			"uuid": "bad9b846-fb8b-4cd4-b92f-50cf83ce2a8b",
+			"version": [
+				1,
+				0,
+				0
+			],
+			"language": "javascript",
+			"entry": "scripts/main.js"
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "01a95d01-c05a-474c-a6a6-e88e4e8cc4e9",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": [
+				2,
+				1,
+				0
+			]
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": [
+				2,
+				0,
+				0
+			]
+		}
+	]
+}

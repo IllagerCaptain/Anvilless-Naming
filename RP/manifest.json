@@ -1,0 +1,46 @@
+{
+	"format_version": 2,
+	"metadata": {
+		"authors": [
+			"IllagerCaptain"
+		],
+		"product_type": "addon"
+	},
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"min_engine_version": [
+			1,
+			21,
+			100
+		],
+		"pack_scope": "world",
+		"uuid": "01a95d01-c05a-474c-a6a6-e88e4e8cc4e9",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "3bee1867-7d50-4af8-90da-1220c05a8096",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "7df939a1-f0e6-44a2-9bd8-4cab447a72ac",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}
