@@ -6,7 +6,7 @@
                 "operation": "insert_back",
                 "value": [
                     {
-                        "ic_rt_server_form_factory": {
+                        "ic_an_server_form_factory": {
                             "type": "panel",
                             "factory": {
                                 "name": "server_form_factory",
@@ -31,7 +31,7 @@
                     },
                     {
                         "binding_type": "view",
-                        "source_property_name": "(#title_text = 'item.name_tag.name')",
+                        "source_property_name": "(not (#title_text = '%gui.edit %item.name_tag.name'))",
                         "target_property_name": "#visible"
                     }
                 ]
@@ -45,7 +45,7 @@
             },
             {
                 "binding_type": "view",
-                "source_property_name": "(not (#title_text = 'item.name_tag.name'))",
+                "source_property_name": "(#title_text = '%gui.edit %item.name_tag.name')",
                 "target_property_name": "#visible"
             }
         ],
