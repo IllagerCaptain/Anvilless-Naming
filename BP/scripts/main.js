@@ -1,38 +1,25 @@
-import { EntityComponentTypes, EquipmentSlot, GameMode, world } from "@minecraft/server";
-import { ModalFormData } from "@minecraft/server-ui";
+import { EntityComponentTypes, EquipmentSlot, system, world } from "@minecraft/server";
+import { CustomForm, ObservableString } from "@minecraft/server-ui";
 
-world.afterEvents.itemUse.subscribe((e) => {
-	if (e.itemStack.matches("minecraft:name_tag")) {
-		const form = new ModalFormData();
-		form.title("%gui.edit %item.name_tag.name");
-		form.textField("", e.itemStack.nameTag ? {
-			rawtext: [
-				{
-					text: `§o${e.itemStack.nameTag}`
-				}
-			]
-		} : {
-			rawtext: [
-				{
-					translate: e.itemStack.localizationKey
-				}
-			]
-		});
-		form.submitButton({
-			rawtext: [
-				{
-					translate: "gui.done"
-				}
-			]
-		});
-		form.show(e.source).then((response) => {
-			if (!response.canceled && response.formValues[0]) {
-				const slot = e.source.getComponent(EntityComponentTypes.Equippable).getEquipmentSlot(EquipmentSlot.Mainhand);
-				if (slot.hasItem() && slot.typeId === e.itemStack.typeId) {
-					e.itemStack.nameTag = response.formValues[0];
-					slot.setItem(e.itemStack);
-				}
-			}
+world.beforeEvents.itemUse.subscribe((e) => {
+	const { itemStack } = e;
+	if (itemStack?.matches("minecraft:name_tag")) {
+		e.cancel = true;
+		const player = e.source;
+		system.run(() => {
+			const textInput = new ObservableString(itemStack.nameTag ?? "", { clientWritable: true });
+			const form = new CustomForm(player, { rawtext: [{ translate: "gui.edit" }, { text: " " }, { translate: itemStack.localizationKey }] })
+				.textField("", textInput)
+				.spacer()
+				.button({ translate: "gui.submit" }, () => {
+					const slot = player.getComponent(EntityComponentTypes.Equippable)?.getEquipmentSlot(EquipmentSlot.Mainhand);
+					if (slot?.hasItem() && slot.typeId === itemStack.typeId) {
+						itemStack.nameTag = textInput.getData();
+						slot.setItem(itemStack);
+					}
+					form.close();
+				});
+			form.show();
 		});
 	}
-});
+})

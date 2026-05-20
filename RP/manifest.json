@@ -11,15 +11,15 @@
 		"description": "pack.description",
 		"min_engine_version": [
 			1,
-			21,
-			100
+			26,
+			30
 		],
 		"pack_scope": "world",
 		"uuid": "01a95d01-c05a-474c-a6a6-e88e4e8cc4e9",
 		"version": [
 			1,
-			0,
-			1
+			1,
+			0
 		]
 	},
 	"modules": [
@@ -38,9 +38,12 @@
 			"uuid": "7df939a1-f0e6-44a2-9bd8-4cab447a72ac",
 			"version": [
 				1,
-				0,
-				1
+				1,
+				0
 			]
 		}
+	],
+	"capabilities": [
+		"pbr"
 	]
 }
